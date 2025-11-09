@@ -4,11 +4,13 @@ import StatsCard from "../components/StatsCard";
 import DonationsChart from "../components/DonationsChart";
 import DonationsTable from "../components/DonationsTable";
 
+
 const Dashboard = () => {
   const [donations, setDonations] = useState([]);
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/donations").then((res) => {
+    axios.get(`${API_BASE}/api/donations`).then((res) => {
       setDonations(res.data);
     });
   }, []);
